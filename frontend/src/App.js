@@ -1,7 +1,5 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import { Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
 import List from "./components/List";

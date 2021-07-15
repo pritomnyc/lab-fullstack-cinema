@@ -6,20 +6,31 @@ function List(props) {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    axios.get(``).then((res) => {
+    axios.get(`http://localhost:5000/getAllMovies`).then((res) => {
       setMovies(res.data);
     });
   }, []);
 
-  function ShowAllMovies() {
-    // return movies.map();
-  }
-
+  const ShowMovies = () => {
+    return movies.map((movie) => {
+      return (
+        <div className="movieList">
+          <ul>
+            <li>
+              <img src={movie.image} alt={movie.title} />
+            </li>
+            <li>{movie.title}</li>
+            <li>
+              <Link to={`/movie/${movie._id}`}>See More</Link>
+            </li>
+          </ul>
+        </div>
+      );
+    });
+  };
   return (
     <div>
-      <h1>Ironhack Cinema</h1>
-      <h3>Click on the movie to check the showtimes!</h3>
-      {ShowAllMovies()}
+      <ShowMovies />
     </div>
   );
 }

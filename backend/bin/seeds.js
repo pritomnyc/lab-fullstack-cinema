@@ -1,4 +1,15 @@
-// To insert in "bin/seeds.js"
+const mongoose = require("mongoose");
+const Movie = require("../models/Movie");
+
+mongoose
+  .connect(
+    "mongodb+srv://mahim:mahim@cluster0.r3bte.mongodb.net/mymovies?retryWrites=true&w=majority",
+    { useNewUrlParser: true, useUnifiedTopology: true }
+  )
+  .then(async (sell) => {
+    await Movie.deleteMany();
+    await Movie.insertMany(movies);
+  });
 
 const movies = [
   {
